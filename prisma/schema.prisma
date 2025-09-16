@@ -1,0 +1,33 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Newsletter {
+  id         String   @id @default(cuid())
+  email      String   @unique
+  source     String?
+  createdAt  DateTime @default(now())
+}
+
+model Contact {
+  id         String   @id @default(cuid())
+  name       String
+  email      String
+  message    String
+  createdAt  DateTime @default(now())
+}
+
+model Member {
+  id         String   @id @default(cuid())
+  email      String   @unique
+  stripeId   String?  @unique
+  tier       String?
+  status     String?  // active, canceled, past_due
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
+}
