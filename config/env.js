@@ -11,7 +11,7 @@ function getEnv(name, fallback, required=false){
 module.exports.ENV = {
   node: getEnv('NODE_ENV', 'production'),
   port: Number(getEnv('PORT','8787')),
-  dbUrl: getEnv('DATABASE_URL','',true),
+  dbUrl: getEnv('DATABASE_URL','postgresql://akdbase_user:EGYR6LYg4QJtj4Z5pFecXc9J7K5J4rKx@dpg-d34u7pm3jp1c73ek4n6g-a.oregon-postgres.render.com/akdbase',true),
   allowedOrigins: (getEnv('ALLOWED_ORIGINS','')||'').split(',').map(s=>s.trim()).filter(Boolean),
   resendKey: getEnv('RESEND_API_KEY',''),
   fromEmail: getEnv('FROM_EMAIL','no-reply@angelkellogg.com'),
